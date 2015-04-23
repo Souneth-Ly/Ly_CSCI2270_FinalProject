@@ -22,31 +22,17 @@ int main(){
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
-            //string Movies;
-            //string year;
-            //cout<<"Enter Title:"<<endl;
-            //getline(cin, Movies);
-            //cout<<"Enter Year:"<<endl;
-            //getline(cin, year);
 
-            //Table->insertMovie(Movies, stoi(year));
         }
         if(selection[0]=='2'){
-            //cout<<"Enter title"<<endl;
-            //getline(cin, Movies);
-            //Table->deleteMovie(Movies);
 
 
         }
         if(selection[0]=='3'){
 
-            //cout<<"Enter movie title"<<endl;
-            //getline(cin, Movies);
-            //Table->findMovie(Movies);
-
         }
         if(selection[0]=='4'){
-            //Table->printInventory();
+
 
         }
         if (selection[0]=='5'){

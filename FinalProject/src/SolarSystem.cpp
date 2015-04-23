@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -78,7 +79,15 @@ void SolarSystem::printSolarSystem()
 }
 
 
-int SolarSystem::randomFact(int x){
+int SolarSystem::randomFact(){
+    planetNode *cursor= head;
+    int random= rand()%5;
+    int counter = 0;
+    while(counter<random)
+    {
+        cursor=cursor->next;
+    }
+    cout<<cursor->planetName<<endl;
 
 }
 
