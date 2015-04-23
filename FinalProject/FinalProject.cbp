@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Untitled1" />
 		<Unit filename="include/SolarSystem.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/SolarSystem.cpp" />
