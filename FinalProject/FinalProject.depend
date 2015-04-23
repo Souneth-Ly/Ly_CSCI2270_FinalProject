@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1429815384 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/main.cpp
+	<iostream>
+	<string>
+	"SolarSystem.h"
+
+1429814928 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
+	<string>
+	<fstream>
+	<iostream>
+
+1429809527 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
+	"SolarSystem.h"
+	<iostream>
+	<string>
+
