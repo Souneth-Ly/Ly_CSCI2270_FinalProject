@@ -53,11 +53,13 @@ void SolarSystem::buildSystem(){
             head=newNode;
             cursor=head;
             cursor->previous=NULL;
-
+            tail=head;
         }else{
             cursor->next=newNode;
-            cursor->previous=cursor;
+            tail=newNode;
+            tail->previous=cursor;
             cursor=newNode;
+            cursor->next=NULL;
 
         }
     }
