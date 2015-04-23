@@ -92,3 +92,18 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     return NULL;
 }
 
+void SolarSystem::findPlanet(string namePlanet){
+    //string namePlanet;
+    planetNode* foundPlanet;
+    foundPlanet = searchPlanet(namePlanet);
+    if(foundPlanet != NULL){
+
+            cout<<"Planet Info:"<<endl;
+            cout<<"==========="<<endl;
+            cout<<"Color: "<<foundPlanet->color<<endl;
+            cout<<"Title: "<<foundPlanet->planetName<<endl;
+            cout<<"Type: "<<foundPlanet->type<<endl;
+            cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<endl;
+    }
+}
+

@@ -22,27 +22,18 @@ int main(){
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
-            //string Movies;
-            //string year;
-            //cout<<"Enter Title:"<<endl;
-            //getline(cin, Movies);
-            //cout<<"Enter Year:"<<endl;
-            //getline(cin, year);
-
-            //Table->insertMovie(Movies, stoi(year));
+            System->buildSystem();
+            System->printSolarSystem();
         }
         if(selection[0]=='2'){
-            //cout<<"Enter title"<<endl;
-            //getline(cin, Movies);
-            //Table->deleteMovie(Movies);
-
+            System->printSolarSystem();
 
         }
         if(selection[0]=='3'){
-
-            //cout<<"Enter movie title"<<endl;
-            //getline(cin, Movies);
-            //Table->findMovie(Movies);
+            string namePlanet;
+            cout<<"Enter Name of the Planet"<<endl;
+            getline(cin, namePlanet);
+            System->findPlanet(namePlanet);
 
         }
         if(selection[0]=='4'){
