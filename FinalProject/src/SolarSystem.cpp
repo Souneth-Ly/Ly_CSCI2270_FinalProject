@@ -63,6 +63,19 @@ void SolarSystem::buildSystem(){
     }
 }
 
+void SolarSystem::printSolarSystem()
+{
+
+    cout<<"===THE SOLAR SYSTEM==="<<endl;
+    for(planetNode *cursor = head; cursor!= NULL; cursor=cursor->next)
+    {
+        cout<<cursor->planetName<<"->";
+    }
+    cout<<" NULL";
+    cout<<endl;
+}
+
+
 int SolarSystem::randomFact(int x){
 
 }
