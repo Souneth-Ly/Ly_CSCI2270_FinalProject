@@ -43,6 +43,7 @@ class SolarSystem
         void closestplanettoearth(std::string sizeplanet, std::string tempature);
         void printSolarSystem();
         void findPlanet(std::string Planet);
+        int distanceBetweenPlanets(std::string name, std::string name2);
 
     protected:
     private:

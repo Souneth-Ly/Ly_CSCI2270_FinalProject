@@ -18,7 +18,8 @@ int main(){
         cout<<"3.Find Planet"<<endl;
         cout<<"4.Print Random Fact"<<endl;
         cout<<"5.Which planet is the most similar to earth"<<endl;
-        cout<<"6.Quit"<<endl;
+        cout<<"6.Distance between planets"<<endl;
+        cout<<"7.Quit"<<endl;
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
@@ -43,7 +44,17 @@ int main(){
         if (selection[0]=='5'){
 
         }
-        if(selection[0]== '6'){
+        if(selection[0]=='6')
+        {
+            string nameP1;
+            string nameP2;
+            cout<<"Enter name of the first planet:"<<endl;
+            getline(cin,nameP1);
+            cout<<"Enter name of the second planet:"<<endl;
+            getline(cin,nameP2);
+            System->distanceBetweenPlanets(nameP1, nameP2);
+        }
+        if(selection[0]== '7'){
 
             cout<<"Goodbye!"<<endl;
             //delete;

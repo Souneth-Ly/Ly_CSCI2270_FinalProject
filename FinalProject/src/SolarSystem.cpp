@@ -106,7 +106,7 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     while(searchNode != NULL){
         if(searchNode->planetName == namePlanet){
             return searchNode;
-    }
+        }
         searchNode = searchNode->next;
     }
     return NULL;
@@ -125,5 +125,33 @@ void SolarSystem::findPlanet(string namePlanet){
             cout<<"Type: "<<foundPlanet->type<<endl;
             cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
     }
+}
+
+int SolarSystem::distanceBetweenPlanets(string name, string name2)
+{
+    planetNode *planetOne=new planetNode;
+    planetNode *planetTwo=new planetNode;
+    planetOne=searchPlanet(name);
+    planetTwo=searchPlanet(name2);
+    int distance=0;
+    if(planetOne->planetName==planetTwo->planetName)
+    {
+        cout<<"This is the same planet"<<endl;
+        return 0;
+    }else{
+        if(planetOne->distanceFromSun>planetTwo->distanceFromSun)
+        {
+            distance=planetOne->distanceFromSun-planetTwo->distanceFromSun;
+            cout<<"The distance between "<<planetOne->planetName<<" and "<<planetTwo->planetName<<" is "<<distance<<" Km"<<endl;
+            return distance;
+        }
+        if(planetTwo->distanceFromSun>planetOne->distanceFromSun)
+        {
+            distance=planetTwo->distanceFromSun-planetOne->distanceFromSun;
+            cout<<"The distance between "<<planetOne->planetName<<" and "<<planetTwo->planetName<<" is "<<distance<<" Km"<<endl;
+            return distance;
+        }
+    }
+
 }
 
