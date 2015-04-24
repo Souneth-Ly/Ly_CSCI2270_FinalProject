@@ -37,7 +37,7 @@ int main(){
 
         }
         if(selection[0]=='4'){
-            //Table->printInventory();
+           System->randomFact();
 
         }
         if (selection[0]=='5'){

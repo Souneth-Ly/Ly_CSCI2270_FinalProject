@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <ctime> // to use the time function
+#include <cstdlib>
 
 using namespace std;
 
@@ -34,6 +36,7 @@ void SolarSystem::buildSystem(){
     string temp;
 
     string inLine;
+
     while (getline(inputfile, line))
     {
         istringstream inLine(line);
@@ -53,14 +56,16 @@ void SolarSystem::buildSystem(){
             head=newNode;
             cursor=head;
             cursor->previous=NULL;
-
+            tail=head;
         }else{
             cursor->next=newNode;
-            cursor->previous=cursor;
+            tail=newNode;
+            tail->previous=cursor;
             cursor=newNode;
-
+            cursor->next=NULL;
         }
     }
+    inputfile.close();
 }
 
 void SolarSystem::printSolarSystem()
@@ -76,7 +81,20 @@ void SolarSystem::printSolarSystem()
 }
 
 
-int SolarSystem::randomFact(int x){
+int SolarSystem::randomFact(){
+    planetNode *cursor= head;
+    srand(time(0));
+    int n= rand() % 4;
+    cout << n<<endl;
+
+    int counter = 0;
+    while(counter<n)
+    {
+
+        cursor=cursor->next;
+        counter++;
+    }
+    cout<<cursor->planetName<<endl;
 
 }
 
