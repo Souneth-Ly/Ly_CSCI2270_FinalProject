@@ -38,9 +38,10 @@ class SolarSystem
         virtual ~SolarSystem();
         void buildSystem();
         int randomFact(int x);
-        void closestplanettoearth(std::string sizeplanet, std::string tempature);
+        void closestPlanettoearth(int distance);
         void printSolarSystem();
         void findPlanet(std::string Planet);
+        int distanceBetweenPlanets(std::string name, std::string name2);
 
     protected:
     private:
