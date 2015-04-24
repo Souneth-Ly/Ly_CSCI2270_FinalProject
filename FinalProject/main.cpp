@@ -19,7 +19,8 @@ int main(){
         cout<<"4.Print Random Fact"<<endl;
         cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
-        cout<<"7.Quit"<<endl;
+        cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
+        cout<<"8.Quit"<<endl;
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
@@ -59,6 +60,10 @@ int main(){
             System->distanceBetweenPlanets(nameP1, nameP2);
         }
         if(selection[0]== '7'){
+
+            System->PrintPlanetbiggesttosmallest();
+        }
+        if(selection[0]== '8'){
 
             cout<<"Goodbye!"<<endl;
             //delete;

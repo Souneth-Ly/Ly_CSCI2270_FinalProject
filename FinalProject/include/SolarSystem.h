@@ -49,10 +49,12 @@ class SolarSystem
         void printSolarSystem();
         void findPlanet(std::string Planet);
         int distanceBetweenPlanets(std::string name, std::string name2);
+        void PrintPlanetbiggesttosmallest();
 
     protected:
     private:
         planetNode* searchPlanet(std::string Planet);
+        planetNode* deleteNode(planetNode* head);
         planetNode* head;
         planetNode* tail;
 };

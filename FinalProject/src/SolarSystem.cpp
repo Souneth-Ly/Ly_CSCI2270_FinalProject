@@ -188,5 +188,70 @@ void SolarSystem::closestPlanet(string namePlanet){
 
 }
 
+planetNode* SolarSystem::deleteNode(planetNode* head){
+    planetNode *cursor;
+    planetNode *cursorPrevious;
+    string name2;
+    cursor=head;
+    if(head->planetName == name2)
+    {
+        head=head->next;
+        delete cursor;
+        return head;
+    }
+
+    for(cursor = head; cursor!= NULL; cursor=cursor->next)
+    {
+
+
+        if(cursor->planetName==name2)
+        {
+            cursorPrevious->next=cursor->next;
+            delete cursor;
+            break;
+        }
+        cursorPrevious=cursor;
+    }
+    return head;
+}
+
+void SolarSystem::PrintPlanetbiggesttosmallest(){
+    planetNode* temp = head;
+    string nameplanet;
+    planetNode* largest;
+    int cur_diameter;
+    int largest_diameter = 0;
+    int x = 1;
+    while(x > 0){
+        if(temp->next == NULL){
+            if(temp->diameter > largest_diameter){
+                largest_diameter = temp->diameter;
+                largest = temp;
+            }
+            cout<<largest->planetName<<"->";
+            deleteNode(largest);
+            temp = head;
+            largest_diameter = 0;
+        }
+        if(temp->diameter > largest_diameter){
+            largest_diameter = temp->diameter;
+            largest = temp;
+        }
+        //for((temp->next == NULL) && (temp->previous == NULL)){
+        for(temp = largest; temp != NULL; temp= temp->next){
+            //cout<<temp->planetName<<endl;
+            cout<<temp->planetName<<"->";
+            //x = -1;
+            //cout<<" NULL";
+            //cout<<endl;
+    }
+        cout<<" NULL";
+        cout<<endl;
+        x = -1;
+
+
+    }
+}
+
 //=======
 //>>>>>>> 545933c21198b3b3e37d32478065884331b71a80
