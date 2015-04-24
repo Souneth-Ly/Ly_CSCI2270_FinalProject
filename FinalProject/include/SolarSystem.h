@@ -11,6 +11,7 @@ struct planetNode{
     //planetNode* previous;
     std::string type;
     std::string color;
+    std::string randomFact;
     int diameter;
     int lengthOfYear;
     int distanceFromSun;
@@ -18,7 +19,7 @@ struct planetNode{
     planetNode *previous;
 
     planetNode(){};
-    planetNode(std::string in_planetName, std::string in_color, int in_diameter, std::string in_type, int in_lengthOfYear, int in_distFromSun)
+    planetNode(std::string in_planetName, std::string in_color, int in_diameter, std::string in_type, int in_lengthOfYear, int in_distFromSun, std::string in_fact)
     {
         planetName=in_planetName;
         color=in_color;
@@ -26,6 +27,7 @@ struct planetNode{
         type=in_type;
         lengthOfYear=in_lengthOfYear;
         distanceFromSun=in_distFromSun;
+        randomFact=in_fact;
     }
 
 };

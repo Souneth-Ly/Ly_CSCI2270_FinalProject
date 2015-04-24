@@ -34,6 +34,7 @@ void SolarSystem::buildSystem(){
     string yearLength;
     string distFromSun;
     string temp;
+    string randomFacts;
 
     string inLine;
 
@@ -49,8 +50,9 @@ void SolarSystem::buildSystem(){
         int year= stoi(yearLength);
         getline(inLine, distFromSun, ',');
         int distSun= stoi(distFromSun);
+        getline(inLine, randomFacts,',');
 
-        planetNode *newNode= new planetNode(planetName, color, diam, type, year, distSun);
+        planetNode *newNode= new planetNode(planetName, color, diam, type, year, distSun, randomFacts);
         if(head==NULL)
         {
             head=newNode;
@@ -94,7 +96,7 @@ int SolarSystem::randomFact(){
         cursor=cursor->next;
         counter++;
     }
-    cout<<cursor->planetName<<endl;
+    cout<<cursor->randomFact<<endl;
 
 }
 
@@ -121,7 +123,7 @@ void SolarSystem::findPlanet(string namePlanet){
             cout<<"Color: "<<foundPlanet->color<<endl;
             cout<<"Title: "<<foundPlanet->planetName<<endl;
             cout<<"Type: "<<foundPlanet->type<<endl;
-            cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<endl;
+            cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
     }
 }
 
