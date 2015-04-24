@@ -17,7 +17,7 @@ int main(){
         cout<<"2.Print the solar system"<<endl;
         cout<<"3.Find Planet"<<endl;
         cout<<"4.Print Random Fact"<<endl;
-        cout<<"5.Which planet is the most similar to earth"<<endl;
+        cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
         cout<<"7.Quit"<<endl;
         cin>>selection;
