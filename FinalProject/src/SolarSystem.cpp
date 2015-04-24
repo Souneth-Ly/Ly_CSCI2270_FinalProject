@@ -120,8 +120,8 @@ void SolarSystem::findPlanet(string namePlanet){
 
             cout<<"Planet Info:"<<endl;
             cout<<"==========="<<endl;
+            cout<<"Name: "<<foundPlanet->planetName<<endl;
             cout<<"Color: "<<foundPlanet->color<<endl;
-            cout<<"Title: "<<foundPlanet->planetName<<endl;
             cout<<"Type: "<<foundPlanet->type<<endl;
             cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
     }
@@ -180,8 +180,8 @@ void SolarSystem::closestPlanet(string namePlanet){
 
             cout<<"Planet Info:"<<endl;
             cout<<"==========="<<endl;
+            cout<<"Name: "<<nearplanet->planetName<<endl;
             cout<<"Color: "<<nearplanet->color<<endl;
-            cout<<"Title: "<<nearplanet->planetName<<endl;
             cout<<"Type: "<<nearplanet->type<<endl;
             cout<<"Distance from the sun: "<<nearplanet->distanceFromSun<<" km"<<endl;
     }
