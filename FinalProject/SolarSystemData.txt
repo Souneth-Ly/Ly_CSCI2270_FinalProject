@@ -1,5 +1,5 @@
-The Sun,Yellow,695800,Star,0,0
-Mercury,Dark gray,4879,Terrestrial planet,88,58000000
-Venus,white-yellowish,12104,Terrestrial planet,225,108942780
-Earth,Blue with patches of green,12756,Terrestrial planet,365,152098233
-Mars,Red,6792,Terrestrial planet,687,249232432
+The Sun,Yellow,695800,Star,0,0,One million Earths could fit inside the Sun
+Mercury,Dark gray,4879,Terrestrial planet,88,58000000,Mercury has wrinkles: As the iron core of the planet cooled and contracted, the surface of the planet became wrinkled
+Venus,white-yellowish,12104,Terrestrial planet,225,108942780,Venus is the second brightest object in the night sky
+Earth,Blue with patches of green,12756,Terrestrial planet,365,152098233,Earth is the most awesome planet in the Solar System
+Mars,Red,6792,Terrestrial planet,687,249232432,Mars has the largest dust storms in the solar system
