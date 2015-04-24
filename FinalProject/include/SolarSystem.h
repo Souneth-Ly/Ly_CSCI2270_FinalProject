@@ -50,6 +50,7 @@ class SolarSystem
         void findPlanet(std::string Planet);
         int distanceBetweenPlanets(std::string name, std::string name2);
         void PrintPlanetbiggesttosmallest();
+        planetNode* addPlanet(planetNode* head, planetNode* previous, std::string name);
 
     protected:
     private:

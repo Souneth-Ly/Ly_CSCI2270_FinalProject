@@ -178,7 +178,7 @@ void SolarSystem::closestPlanet(string namePlanet){
     }
      if(nearplanet != NULL){
 
-            cout<<"Planet Info:"<<endl;
+            cout<<"Planet Close to:"<<" "<<Planet->planetName<<endl;
             cout<<"==========="<<endl;
             cout<<"Name: "<<nearplanet->planetName<<endl;
             cout<<"Color: "<<nearplanet->color<<endl;
@@ -246,11 +246,20 @@ void SolarSystem::PrintPlanetbiggesttosmallest(){
             //cout<<endl;
     }
         cout<<" NULL";
-        cout<<endl;
+        cout<<" "<<endl;
         x = -1;
 
 
     }
+}
+
+planetNode* SolarSystem::addPlanet(planetNode* head, planetNode* previous, string name){
+    planetNode *temp = previous->next;
+    planetNode *nextPlanet = new planetNode;
+    previous->next = nextPlanet;
+    nextPlanet->next = temp;
+    nextPlanet->planetName = name;
+    //return head;
 }
 
 //=======

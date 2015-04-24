@@ -6,6 +6,8 @@ using namespace std;
 
 int main(){
     SolarSystem *System = new SolarSystem;
+    planetNode* head;
+    planetNode* previous;
 
     //inputfile.close();
 
@@ -60,8 +62,24 @@ int main(){
             System->distanceBetweenPlanets(nameP1, nameP2);
         }
         if(selection[0]== '7'){
+            string name;
+            string nextName;
+            cout<<"Enter a planet name:"<<endl;
+            getline(cin, nextName);
+            cout<<"Enter a previous planet name:"<<endl;
+            getline(cin, name);
+            for(planetNode *cursor = head; cursor!= NULL; cursor = cursor->next)
+            {
+                if(cursor->planetName == name)
+                {
+                    previous = cursor;
+                }
 
-            System->PrintPlanetbiggesttosmallest();
+            }
+
+            System->addPlanet(head, previous, nextName);
+
+            //System->PrintPlanetbiggesttosmallest();
         }
         if(selection[0]== '8'){
 
