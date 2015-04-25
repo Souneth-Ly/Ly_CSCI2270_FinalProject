@@ -6,8 +6,6 @@ using namespace std;
 
 int main(){
     SolarSystem *System = new SolarSystem;
-    planetNode* head;
-    planetNode* previous;
 
     //inputfile.close();
 
