@@ -165,16 +165,22 @@ void SolarSystem::closestPlanet(string namePlanet){
     if(Planet != NULL){
         if(Planet->previous == NULL){
              nearplanet= Planet->next;
-        }
-        if (Planet->next == NULL){
+             //cout<<"HI"<<endl;
+        }else{
+        if(Planet->next == NULL){
             nearplanet = Planet->previous;
+            //nearplanet = Planet->next;
+            cout<<"HI"<<endl;
+        }else{
+            pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
+            next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
         }
-        pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
-        next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
+
         if(pre_dist > next_dist){
             nearplanet = Planet->next;
         }else
         nearplanet = Planet->previous;
+    }
     }
      if(nearplanet != NULL){
 
@@ -237,8 +243,8 @@ void SolarSystem::PrintPlanetbiggesttosmallest(){
             largest_diameter = temp->diameter;
             largest = temp;
         }
-        //for((temp->next == NULL) && (temp->previous == NULL)){
-        for(temp = largest; temp != NULL; temp= temp->next){
+        if((temp->next == NULL) && (temp->previous == NULL)){
+        //for(temp = largest; temp != NULL; temp= temp->next){
             //cout<<temp->planetName<<endl;
             cout<<temp->planetName<<"->";
             //x = -1;

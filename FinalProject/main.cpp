@@ -22,7 +22,8 @@ int main(){
         cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
         cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
-        cout<<"8.Quit"<<endl;
+        cout<<"8.Add our own planet"<<endl;
+        cout<<"9.Quit"<<endl;
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
@@ -62,6 +63,9 @@ int main(){
             System->distanceBetweenPlanets(nameP1, nameP2);
         }
         if(selection[0]== '7'){
+            System->PrintPlanetbiggesttosmallest();
+        }
+        if(selection[0]== '8'){
             string name;
             string nextName;
             cout<<"Enter a planet name:"<<endl;
@@ -78,10 +82,8 @@ int main(){
             }
 
             System->addPlanet(head, previous, nextName);
-
-            //System->PrintPlanetbiggesttosmallest();
         }
-        if(selection[0]== '8'){
+        if(selection[0]== '9'){
 
             cout<<"Goodbye!"<<endl;
             //delete;
