@@ -1,19 +1,26 @@
 # depslib dependency file v1.0
-1429999337 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/main.cpp
+1430000520 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/main.cpp
 	<iostream>
 	<string>
 	"SolarSystem.h"
 
 1429841635 D
 
-<<<<<<< HEAD
-1429999337 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
-=======
-1429989999 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
->>>>>>> e2e2a7e9b6550e0e66fb5cf857d3da005255aa24
+1430000987 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
 	<string>
 	<fstream>
 	<iostream>
+
+1429989503 2a7e9b6550e0e66fb5cf857d3da005255aa24
+	<string>
+	<fstream>
+	<iostream>
+	"SolarSystem.h"
+	<iostream>
+	<string>
+	<sstream>
+	<ctime>
+	<cstdlib>
 
 1429841635 933c21198b3b3e37d32478065884331b71a80
 	<string>
@@ -26,8 +33,7 @@
 	<ctime>
 	<cstdlib>
 
-<<<<<<< HEAD
-1429999411 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
+1430001607 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
 	"SolarSystem.h"
 	<iostream>
 	<string>
@@ -36,13 +42,4 @@
 	<cstdlib>
 
 1429988878 91fd38ec5c574bb8f3955de6e7652c4820b12
-=======
-1429989503 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
->>>>>>> e2e2a7e9b6550e0e66fb5cf857d3da005255aa24
-	"SolarSystem.h"
-	<iostream>
-	<string>
-	<sstream>
-	<ctime>
-	<cstdlib>
 

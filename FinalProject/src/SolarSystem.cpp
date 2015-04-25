@@ -87,7 +87,7 @@ void SolarSystem::printSolarSystem()
 int SolarSystem::randomFact(){
     planetNode *cursor= head;
     srand(time(0));
-    int n= rand() % 4;
+    int n= rand() % 6;
 
 
     int counter = 0;
@@ -292,6 +292,12 @@ planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
     newPlanet->planetName=name;
     newPlanet->distanceFromSun=dist;
     newPlanet->randomFact=coolFact;
+    if(dist<450000000)
+    {
+        newPlanet->type="Terrestrial planet";
+        cout<<newPlanet->planetName<<" will be a Terrestrial planet, which means it will be made of minerals"<<endl;
+        cout<<"It is a terrestrial planet because you put it before the asteroid belt"<<endl;
+    }
 
 
 
