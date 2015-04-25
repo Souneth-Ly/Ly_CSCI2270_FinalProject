@@ -6,6 +6,8 @@ using namespace std;
 
 int main(){
     SolarSystem *System = new SolarSystem;
+    planetNode* head;
+    planetNode* previous;
 
     //inputfile.close();
 
@@ -17,9 +19,11 @@ int main(){
         cout<<"2.Print the solar system"<<endl;
         cout<<"3.Find Planet"<<endl;
         cout<<"4.Print Random Fact"<<endl;
-        cout<<"5.Which planet is the most similar to earth"<<endl;
+        cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
-        cout<<"7.Quit"<<endl;
+        cout<<"7. Print the Biggest Planet to the Smallest"<<endl;
+        cout<<"8.Add our own planet"<<endl;
+        cout<<"9.Quit"<<endl;
         cin>>selection;
         cin.ignore(1, '\n');
         if(selection[0]=='1'){
@@ -42,6 +46,10 @@ int main(){
 
         }
         if (selection[0]=='5'){
+            string Nameplanet;
+            cout<<"Enter Name of the Planet"<<endl;
+            getline(cin, Nameplanet);
+            System->closestPlanet(Nameplanet);
 
         }
         if(selection[0]=='6')
@@ -55,6 +63,31 @@ int main(){
             System->distanceBetweenPlanets(nameP1, nameP2);
         }
         if(selection[0]== '7'){
+            System->PrintPlanetbiggesttosmallest();
+        }
+        if(selection[0]== '8'){
+            string creator;
+            string distance;
+            string nextName;
+            cout<<"Please enter your name:"<<endl;
+            getline(cin,creator);
+            cout<<"Enter the new planet name:"<<endl;
+            getline(cin, nextName);
+            cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
+            getline(cin, distance);
+            /*
+            for(planetNode *cursor = head; cursor!= NULL; cursor = cursor->next)
+            {
+                if(cursor->planetName == name)
+                {
+                    previous = cursor;
+                }
+
+            }*/
+
+            System->addPlanet(nextName,stoi(distance),creator);
+        }
+        if(selection[0]== '9'){
 
             cout<<"Goodbye!"<<endl;
             //delete;

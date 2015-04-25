@@ -126,8 +126,8 @@ void SolarSystem::findPlanet(string namePlanet){
 
             cout<<"Planet Info:"<<endl;
             cout<<"==========="<<endl;
+            cout<<"Name: "<<foundPlanet->planetName<<endl;
             cout<<"Color: "<<foundPlanet->color<<endl;
-            cout<<"Title: "<<foundPlanet->planetName<<endl;
             cout<<"Type: "<<foundPlanet->type<<endl;
             cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
     }
@@ -165,3 +165,134 @@ int SolarSystem::distanceBetweenPlanets(string name, string name2)
 
 }
 
+//<<<<<<< HEAD
+void SolarSystem::closestPlanet(string namePlanet){
+    planetNode* Planet = new planetNode;
+    planetNode * nearplanet;
+    Planet = searchPlanet(namePlanet);
+    int pre_dist;
+    int next_dist;
+    if(Planet != NULL){
+        if(Planet->previous == NULL){
+             nearplanet= Planet->next;
+             //cout<<"HI"<<endl;
+        }else{
+        if(Planet->next == NULL){
+            nearplanet = Planet->previous;
+            //nearplanet = Planet->next;
+            cout<<"HI"<<endl;
+        }else{
+            pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
+            next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
+        }
+
+        if(pre_dist > next_dist){
+            nearplanet = Planet->next;
+        }else
+        nearplanet = Planet->previous;
+    }
+    }
+     if(nearplanet != NULL){
+
+            cout<<"Planet Close to:"<<" "<<Planet->planetName<<endl;
+            cout<<"==========="<<endl;
+            cout<<"Name: "<<nearplanet->planetName<<endl;
+            cout<<"Color: "<<nearplanet->color<<endl;
+            cout<<"Type: "<<nearplanet->type<<endl;
+            cout<<"Distance from the sun: "<<nearplanet->distanceFromSun<<" km"<<endl;
+    }
+
+}
+
+planetNode* SolarSystem::deleteNode(planetNode* head){
+    planetNode *cursor;
+    planetNode *cursorPrevious;
+    string name2;
+    cursor=head;
+    if(head->planetName == name2)
+    {
+        head=head->next;
+        delete cursor;
+        return head;
+    }
+
+    for(cursor = head; cursor!= NULL; cursor=cursor->next)
+    {
+
+
+        if(cursor->planetName==name2)
+        {
+            cursorPrevious->next=cursor->next;
+            delete cursor;
+            break;
+        }
+        cursorPrevious=cursor;
+    }
+    return head;
+}
+
+void SolarSystem::PrintPlanetbiggesttosmallest(){
+    planetNode* temp = head;
+    string nameplanet;
+    planetNode* largest;
+    int cur_diameter;
+    int largest_diameter = 0;
+    int x = 1;
+    while(x > 0){
+        if(temp->next == NULL){
+            if(temp->diameter > largest_diameter){
+                largest_diameter = temp->diameter;
+                largest = temp;
+            }
+            cout<<largest->planetName<<"->";
+            deleteNode(largest);
+            temp = head;
+            largest_diameter = 0;
+        }
+        if(temp->diameter > largest_diameter){
+            largest_diameter = temp->diameter;
+            largest = temp;
+        }
+        if((temp->next == NULL) && (temp->previous == NULL)){
+        //for(temp = largest; temp != NULL; temp= temp->next){
+            //cout<<temp->planetName<<endl;
+            cout<<temp->planetName<<"->";
+            //x = -1;
+            //cout<<" NULL";
+            //cout<<endl;
+    }
+        cout<<" NULL";
+        cout<<" "<<endl;
+        x = -1;
+
+
+    }
+}
+
+planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
+    planetNode *cursor=new planetNode;
+    planetNode *newPlanet=new planetNode;
+    string coolFact= name+" was created by the great and powerful "+creator;
+    cursor=head;
+    while(dist>cursor->distanceFromSun)
+    {
+        cursor=cursor->next;
+    }
+    planetNode *temp=cursor->previous;
+    planetNode *temp2=cursor->previous->next;
+    cursor->previous->next=newPlanet;
+    cursor->previous=newPlanet;
+    newPlanet->previous=temp;
+    newPlanet->next=temp2;
+    newPlanet->planetName=name;
+    newPlanet->distanceFromSun=dist;
+    newPlanet->randomFact=coolFact;
+
+
+
+
+    return head;
+}
+
+//=======
+//>>>>>>> 545933c21198b3b3e37d32478065884331b71a80
