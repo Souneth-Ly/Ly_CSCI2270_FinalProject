@@ -234,39 +234,44 @@ planetNode* SolarSystem::deleteNode(planetNode* head){
 void SolarSystem::PrintPlanetbiggesttosmallest(){
     planetNode* temp = head;
     string nameplanet;
-    planetNode* largest;
+    planetNode* largest = new planetNode;
     int cur_diameter;
     int largest_diameter = 0;
     int x = 1;
-    while(x > 0){
+    //cout<<"1"<<endl;
+    while(x >= 0){
         if(temp->next == NULL){
-            if(temp->diameter > largest_diameter){
+            if(temp->diameter == largest_diameter){
                 largest_diameter = temp->diameter;
                 largest = temp;
-            }
+                cout<<"1"<<endl;
+            }else{
             cout<<largest->planetName<<"->";
             deleteNode(largest);
             temp = head;
             largest_diameter = 0;
         }
+        }
         if(temp->diameter > largest_diameter){
             largest_diameter = temp->diameter;
             largest = temp;
         }
-        if((temp->next == NULL) && (temp->previous == NULL)){
+        if((temp->next != NULL) && (temp->previous != NULL)){
         //for(temp = largest; temp != NULL; temp= temp->next){
-            //cout<<temp->planetName<<endl;
-            cout<<temp->planetName<<"->";
+            cout<<temp->planetName<<endl;
+            //cout<<temp->planetName<<"->";
             //x = -1;
             //cout<<" NULL";
             //cout<<endl;
     }
-        cout<<" NULL";
-        cout<<" "<<endl;
-        x = -1;
+        //cout<<" NULL";
+        //cout<<" "<<endl;
+        x++;
+
 
 
     }
+    x = -1;
 }
 
 planetNode* SolarSystem::addPlanet(string name, int dist,string creator){

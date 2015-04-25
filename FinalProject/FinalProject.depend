@@ -6,7 +6,11 @@
 
 1429841635 D
 
+<<<<<<< HEAD
 1429999337 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
+=======
+1429989999 /home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/include/SolarSystem.h
+>>>>>>> e2e2a7e9b6550e0e66fb5cf857d3da005255aa24
 	<string>
 	<fstream>
 	<iostream>
@@ -22,6 +26,7 @@
 	<ctime>
 	<cstdlib>
 
+<<<<<<< HEAD
 1429999411 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
 	"SolarSystem.h"
 	<iostream>
@@ -31,6 +36,9 @@
 	<cstdlib>
 
 1429988878 91fd38ec5c574bb8f3955de6e7652c4820b12
+=======
+1429989503 source:/home/user/Desktop/FinalProject/Ly_CSCI2270_FinalProject/FinalProject/src/SolarSystem.cpp
+>>>>>>> e2e2a7e9b6550e0e66fb5cf857d3da005255aa24
 	"SolarSystem.h"
 	<iostream>
 	<string>
