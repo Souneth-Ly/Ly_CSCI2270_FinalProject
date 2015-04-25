@@ -18,6 +18,7 @@ SolarSystem::~SolarSystem()
 }
 
 void SolarSystem::buildSystem(){
+
     planetNode *cursor=NULL;
     string line;
     ifstream inputfile;
@@ -87,7 +88,7 @@ int SolarSystem::randomFact(){
     planetNode *cursor= head;
     srand(time(0));
     int n= rand() % 4;
-    cout << n<<endl;
+
 
     int counter = 0;
     while(counter<n)
@@ -109,7 +110,12 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
         }
         searchNode = searchNode->next;
     }
-    return NULL;
+    if(searchNode==NULL)
+    {
+        cout<<"This planet is not in our Solar System"<<endl;
+        return NULL;
+    }
+
 }
 
 void SolarSystem::findPlanet(string namePlanet){
@@ -134,6 +140,10 @@ int SolarSystem::distanceBetweenPlanets(string name, string name2)
     planetOne=searchPlanet(name);
     planetTwo=searchPlanet(name2);
     int distance=0;
+    if(planetOne==NULL || planetTwo==NULL)
+    {
+        return 0;
+    }
     if(planetOne->planetName==planetTwo->planetName)
     {
         cout<<"This is the same planet"<<endl;
