@@ -155,7 +155,6 @@ int SolarSystem::distanceBetweenPlanets(string name, string name2)
 
 }
 
-//<<<<<<< HEAD
 void SolarSystem::closestPlanet(string namePlanet){
     planetNode* Planet = new planetNode;
     planetNode * nearplanet;
@@ -165,12 +164,9 @@ void SolarSystem::closestPlanet(string namePlanet){
     if(Planet != NULL){
         if(Planet->previous == NULL){
              nearplanet= Planet->next;
-             //cout<<"HI"<<endl;
         }else{
         if(Planet->next == NULL){
             nearplanet = Planet->previous;
-            //nearplanet = Planet->next;
-            cout<<"HI"<<endl;
         }else{
             pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
             next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
@@ -194,10 +190,10 @@ void SolarSystem::closestPlanet(string namePlanet){
 
 }
 
-planetNode* SolarSystem::deleteNode(planetNode* head){
+planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     planetNode *cursor;
     planetNode *cursorPrevious;
-    string name2;
+    //string name2;
     cursor=head;
     if(head->planetName == name2)
     {
@@ -228,50 +224,52 @@ void SolarSystem::PrintPlanetbiggesttosmallest(){
     int cur_diameter;
     int largest_diameter = 0;
     int x = 1;
-    //cout<<"1"<<endl;
-    while(x >= 0){
-        if(temp->next == NULL){
-            if(temp->diameter == largest_diameter){
+    while(x > 0){
+        if(temp->next != NULL){
+            if(temp->diameter > largest_diameter){
                 largest_diameter = temp->diameter;
                 largest = temp;
-                cout<<"1"<<endl;
-            }else{
-            cout<<largest->planetName<<"->";
-            deleteNode(largest);
+            }
+            cout<<largest->planetName<<endl;
+            deleteNode(largest, largest->planetName);
             temp = head;
             largest_diameter = 0;
-        }
         }
         if(temp->diameter > largest_diameter){
             largest_diameter = temp->diameter;
             largest = temp;
         }
-        if((temp->next != NULL) && (temp->previous != NULL)){
-        //for(temp = largest; temp != NULL; temp= temp->next){
+        if(temp->next == NULL || temp->previous == NULL){
             cout<<temp->planetName<<endl;
-            //cout<<temp->planetName<<"->";
-            //x = -1;
-            //cout<<" NULL";
-            //cout<<endl;
+            x = -1;
+        }
     }
-        //cout<<" NULL";
-        //cout<<" "<<endl;
-        x++;
-
-
-
     }
-    x = -1;
-}
 
-planetNode* SolarSystem::addPlanet(planetNode* head, planetNode* previous, string name){
-    planetNode *temp = previous->next;
-    planetNode *nextPlanet = new planetNode;
-    previous->next = nextPlanet;
-    nextPlanet->next = temp;
-    nextPlanet->planetName = name;
-    //return head;
+planetNode* SolarSystem::addPlanet(string name, int dist, string creator){
+    planetNode *cursor=new planetNode;
+    planetNode *newPlanet=new planetNode;
+    string coolFact= name+" was created by the great and powerful "+creator;
+    cursor=head;
+    while(dist>cursor->distanceFromSun)
+    {
+        cursor=cursor->next;
+    }
+    planetNode *temp=cursor->previous;
+    planetNode *temp2=cursor->previous->next;
+    cursor->previous->next=newPlanet;
+    cursor->previous=newPlanet;
+    newPlanet->previous=temp;
+    newPlanet->next=temp2;
+    newPlanet->planetName=name;
+    newPlanet->distanceFromSun=dist;
+    newPlanet->randomFact=coolFact;
+    if(dist<450000000)
+    {
+        newPlanet->type="Terrestrial planet";
+        cout<<newPlanet->planetName<<" will be a Terrestrial planet, which means it will be made of minerals"<<endl;
+        cout<<"It is a terrestrial planet because you put it before the asteroid belt"<<endl;
+    }
 }
-
 //=======
 //>>>>>>> 545933c21198b3b3e37d32478065884331b71a80

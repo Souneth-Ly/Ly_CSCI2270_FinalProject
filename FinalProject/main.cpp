@@ -66,22 +66,25 @@ int main(){
             System->PrintPlanetbiggesttosmallest();
         }
         if(selection[0]== '8'){
-            string name;
+            string creator;
+            string distance;
             string nextName;
-            cout<<"Enter a planet name:"<<endl;
+            cout<<"Please enter your name:"<<endl;
+            getline(cin,creator);
+            cout<<"Enter the new planet name:"<<endl;
             getline(cin, nextName);
-            cout<<"Enter a previous planet name:"<<endl;
-            getline(cin, name);
+            cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
+            getline(cin, distance);
+            /*
             for(planetNode *cursor = head; cursor!= NULL; cursor = cursor->next)
             {
                 if(cursor->planetName == name)
                 {
                     previous = cursor;
                 }
+            }*/
 
-            }
-
-            System->addPlanet(head, previous, nextName);
+            System->addPlanet(nextName,stoi(distance),creator);
         }
         if(selection[0]== '9'){
 
