@@ -84,7 +84,7 @@ int main(){
 
             }*/
 
-            System->addPlanet(nextName,stoi(distance),creator);
+            System->addPlanet(nextName,stoll(distance),creator);
         }
         if(selection[0]== '9'){
 

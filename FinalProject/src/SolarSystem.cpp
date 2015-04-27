@@ -19,6 +19,9 @@ SolarSystem::~SolarSystem()
     //dtor
 }
 
+//The build function will build the solar system from the SolarSystemData.txt as a doubly linked list
+//it will get the planet name,color,diameter, type of planet, length of year in days, distance from the sun, a random fact about the planet
+
 void SolarSystem::buildSystem(){
 
     planetNode *cursor=NULL;
@@ -52,7 +55,7 @@ void SolarSystem::buildSystem(){
         getline(inLine, yearLength, ',');
         int year= stoi(yearLength);
         getline(inLine, distFromSun, ',');
-        int distSun= stoi(distFromSun);
+        long long distSun= stoll(distFromSun);
         getline(inLine, randomFacts,',');
 
         planetNode *newNode= new planetNode(planetName, color, diam, type, year, distSun, randomFacts);
@@ -72,6 +75,8 @@ void SolarSystem::buildSystem(){
     }
     inputfile.close();
 }
+//The build function will out put a linked list of the planets: The Sun->Mercury->Venus and so on until it hits NULL
+
 
 void SolarSystem::printSolarSystem()
 {
@@ -112,6 +117,8 @@ int SolarSystem::randomFact(){
     return 0;
 }
 //this function will output the random fact that is stored in a node;
+
+
 
 planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     planetNode * searchNode = new planetNode;
@@ -290,7 +297,7 @@ void SolarSystem::PrintPlanetbiggesttosmallest(){
     x = -1;
 }
 
-planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
+planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
     planetNode *cursor=new planetNode;
     planetNode *newPlanet=new planetNode;
     string coolFact= name+" was created by the great and powerful "+creator;
@@ -305,7 +312,7 @@ planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
         cout<<"Your planet will be too close to "<<cursor->planetName<<endl;
         cout<<"please choose a new distance thats a million or two Km less than your current distance:"<<endl;
         getline(cin, newDistance);
-        dist=stoi(newDistance);
+        dist=stoll(newDistance);
     }
     else if(dist-cursor->previous->distanceFromSun<2500000)
     {
@@ -328,14 +335,16 @@ planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
     cout<<"What color do you want your planet?"<<endl;
     getline(cin, color);
     newPlanet->color=color;
-    int PlanetSize=0;
     if(dist<450000000)
     {
         newPlanet->type="Terrestrial planet";
-        cout<<newPlanet->planetName<<" will be a Terrestrial planet, which means it will be made of minerals"<<endl;
-        cout<<"It is a terrestrial planet because you put it before the asteroid belt"<<endl;
-    }else{
-
+        cout<<newPlanet->planetName<<" will be a Terrestrial planet because you put it before the asteroid belt"<<endl;
+    }else if(45000000<dist && dist<1700000000){
+        newPlanet->type="Gas Giant";
+        cout<<newPlanet->planetName<<" will be a Gas Giant because you put it after the asteroid belt"<<endl;
+    }else {
+        newPlanet->type="Ice Giant";
+        cout<<newPlanet->planetName<<" will be an Ice Giant because you put it after the asteroid belt and after Saturn"<<endl;
     }
     return head;
 }
