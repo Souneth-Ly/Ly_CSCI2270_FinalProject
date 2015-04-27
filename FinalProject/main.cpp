@@ -7,6 +7,7 @@ using namespace std;
 int main(){
     SolarSystem *System = new SolarSystem;
 
+
     //inputfile.close();
 
     while(1){
@@ -19,7 +20,7 @@ int main(){
         cout<<"4.Print Random Fact"<<endl;
         cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
-        cout<<"7. Print the Biggest Planet to the Smallest"<<endl;
+        cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
         cout<<"8.Add our own planet"<<endl;
         cout<<"9.Quit"<<endl;
         cin>>selection;
@@ -45,7 +46,7 @@ int main(){
         }
         if (selection[0]=='5'){
             string Nameplanet;
-            cout<<"Enter Name of the Planet"<<endl;
+            cout<<"Enter your favorite Planet"<<endl;
             getline(cin, Nameplanet);
             System->closestPlanet(Nameplanet);
 
@@ -76,7 +77,7 @@ int main(){
             cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
             getline(cin, distance);
 
-            System->addPlanet(nextName,stoi(distance),creator);
+            System->addPlanet(nextName,stoll(distance),creator);
         }
         if(selection[0]== '9'){
 

@@ -12,12 +12,12 @@ struct planetNode{
     std::string randomFact;
     int diameter;
     int lengthOfYear;
-    int distanceFromSun;
+    long long distanceFromSun;
     planetNode *next;
     planetNode *previous;
 
     planetNode(){};
-    planetNode(std::string in_planetName, std::string in_color, int in_diameter, std::string in_type, int in_lengthOfYear, int in_distFromSun, std::string in_fact)
+    planetNode(std::string in_planetName, std::string in_color, int in_diameter, std::string in_type, int in_lengthOfYear, long long in_distFromSun, std::string in_fact)
     {
         planetName=in_planetName;
         color=in_color;
@@ -46,11 +46,13 @@ class SolarSystem
         int distanceBetweenPlanets(std::string name, std::string name2);
         void PrintPlanetbiggesttosmallest();
         planetNode* addPlanet(std::string name, int dist, std::string user);
+        planetNode *addPlanet(std::string name,long long dist,std::string user);
 
     protected:
     private:
         planetNode* searchPlanet(std::string Planet);
         planetNode* deleteNode(planetNode* head, std::string name2);
+        void Bubblesort(int *array, int sizeArray);
         planetNode* head;
         planetNode* tail;
 };
