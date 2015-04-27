@@ -6,6 +6,8 @@
 #include <cstdlib>
 
 using namespace std;
+//Uranus,Blue-green,51118,Ice Giant,30687,3006318143,Uranus hits the coldest temperatures of any planet reaching temperature of -224°C
+//Neptune,Bright Blue,49528,Ice Giant,60190,4537039826,Neptune has a very active climate. Large storms whirl through its upper atmosphere, and high-speed winds track around the planet at up 600 meters per second.
 
 SolarSystem::SolarSystem()
 {
@@ -84,22 +86,32 @@ void SolarSystem::printSolarSystem()
 }
 
 
+
+//the randomFact function is a function that randomly picks one of the nodes in the linked list and prints out the random fact about the planet, stored in the node
+//
 int SolarSystem::randomFact(){
     planetNode *cursor= head;
-    srand(time(0));
-    int n= rand() % 6;
-
-
-    int counter = 0;
-    while(counter<n)
+    int counter=0;//to store the number of nodes
+    for(cursor=head;cursor!=NULL;cursor=cursor->next) //for loop to count how many nodes are in the list
     {
-
-        cursor=cursor->next;
         counter++;
     }
-    cout<<cursor->randomFact<<endl;
 
+    srand(time(0));
+    int n= rand() %counter; //random function that generates a random number. then gets divided by the number of nodes to get the remainder
+
+    planetNode *cursor2=new planetNode; //new node to travel through the list
+    cursor2=head;
+    int counter2 = 0;// counter to find which node to get the fact from
+    while(counter2<n)
+    {
+        cursor2=cursor2->next;
+        counter2++;
+    }
+    cout<<cursor2->randomFact<<endl;
+    return 0;
 }
+//this function will output the random fact that is stored in a node;
 
 planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     planetNode * searchNode = new planetNode;
@@ -133,37 +145,41 @@ void SolarSystem::findPlanet(string namePlanet){
     }
 }
 
+
+//This function find the distance between two planets, by subtracting the nodes "distances from the sun" from each other to get the distance between them
+//the function takes in two strings of planet names that will be inputed by the user
 int SolarSystem::distanceBetweenPlanets(string name, string name2)
 {
-    planetNode *planetOne=new planetNode;
+    planetNode *planetOne=new planetNode;//declaring nodes
     planetNode *planetTwo=new planetNode;
-    planetOne=searchPlanet(name);
+    planetOne=searchPlanet(name);//putting planet information into the nodes by using the searchPlanet function
     planetTwo=searchPlanet(name2);
     int distance=0;
-    if(planetOne==NULL || planetTwo==NULL)
+    if(planetOne==NULL || planetTwo==NULL)//if on of the planets doesn't exist return a 0
     {
         return 0;
     }
-    if(planetOne->planetName==planetTwo->planetName)
+    if(planetOne->planetName==planetTwo->planetName)//if the user inputs the same name for both parameters tell the user that it is the same planet
     {
         cout<<"This is the same planet"<<endl;
         return 0;
     }else{
-        if(planetOne->distanceFromSun>planetTwo->distanceFromSun)
+        if(planetOne->distanceFromSun>planetTwo->distanceFromSun)//if the fist planet is bigger than the second
         {
-            distance=planetOne->distanceFromSun-planetTwo->distanceFromSun;
+            distance=planetOne->distanceFromSun-planetTwo->distanceFromSun;//then subtract the second from the first to not get a negative number
             cout<<"The distance between "<<planetOne->planetName<<" and "<<planetTwo->planetName<<" is "<<distance<<" Km"<<endl;
             return distance;
         }
-        if(planetTwo->distanceFromSun>planetOne->distanceFromSun)
+        if(planetTwo->distanceFromSun>planetOne->distanceFromSun)//if the second is bigger than the first
         {
-            distance=planetTwo->distanceFromSun-planetOne->distanceFromSun;
+            distance=planetTwo->distanceFromSun-planetOne->distanceFromSun;//then subtract the first from the second
             cout<<"The distance between "<<planetOne->planetName<<" and "<<planetTwo->planetName<<" is "<<distance<<" Km"<<endl;
             return distance;
         }
     }
 
 }
+//once this function is complete and it was a valid input, it should output the the name of the planets and the distance between them
 
 //<<<<<<< HEAD
 void SolarSystem::closestPlanet(string namePlanet){
@@ -283,6 +299,22 @@ planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
     {
         cursor=cursor->next;
     }
+    if(cursor->distanceFromSun-dist<2500000)
+    {
+        string newDistance;
+        cout<<"Your planet will be too close to "<<cursor->planetName<<endl;
+        cout<<"please choose a new distance thats a million or two Km less than your current distance:"<<endl;
+        getline(cin, newDistance);
+        dist=stoi(newDistance);
+    }
+    else if(dist-cursor->previous->distanceFromSun<2500000)
+    {
+        string newDistance;
+        cout<<"Your planet will be too close to "<<cursor->previous->planetName<<endl;
+        cout<<"please choose a new distance thats a million or two Km greater than your old distance:"<<endl;
+        getline(cin, newDistance);
+        dist=stoi(newDistance);
+    }
     planetNode *temp=cursor->previous;
     planetNode *temp2=cursor->previous->next;
     cursor->previous->next=newPlanet;
@@ -292,16 +324,19 @@ planetNode* SolarSystem::addPlanet(string name, int dist,string creator){
     newPlanet->planetName=name;
     newPlanet->distanceFromSun=dist;
     newPlanet->randomFact=coolFact;
+    string color;
+    cout<<"What color do you want your planet?"<<endl;
+    getline(cin, color);
+    newPlanet->color=color;
+    int PlanetSize=0;
     if(dist<450000000)
     {
         newPlanet->type="Terrestrial planet";
         cout<<newPlanet->planetName<<" will be a Terrestrial planet, which means it will be made of minerals"<<endl;
         cout<<"It is a terrestrial planet because you put it before the asteroid belt"<<endl;
+    }else{
+
     }
-
-
-
-
     return head;
 }
 

@@ -7,6 +7,7 @@ using namespace std;
 int main(){
     SolarSystem *System = new SolarSystem;
 
+
     //inputfile.close();
 
     while(1){
