@@ -250,53 +250,38 @@ planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
 }//delete a planet from the solar system
 
 void SolarSystem::PrintPlanetbiggesttosmallest(){
-    /*
-    int arraySize;
-
-    planetNode* Diameter = new planetNode[arraySize];
-    planetNode * cursor;
-    int newDiameter = Diameter->diameter;
-    for(int i = 0 ; i < arraySize; i++){
-        Diameter[i];
+    cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
+    planetNode *cursor= new planetNode;
+    int counter=0;
+    for(cursor=head;cursor!=NULL;cursor=cursor->next)
+    {
+        counter++;
     }
-    planetNode* temp = head;
-    string nameplanet;
-    planetNode* largest;
-    int cur_diameter;
-    int largest_diameter = temp->diameter;
-    int x = 1;
-    while(x > 0){
-        if(temp->next != NULL){
-            if(temp->diameter >= largest_diameter){
-                largest_diameter = temp->diameter;
-                largest = temp;
-            //}
-            //cout<<largest->planetName<<"->";
-            //deleteNode(largest, largest->planetName);
-            temp = temp->next;
-            largest_diameter = temp->diameter;
-        }
-        }
-        //cout<<largest->planetName<<endl;
-        if(temp->diameter > largest_diameter){
-            largest_diameter = temp->diameter;
-            largest = temp;
-            //cout<<largest->planetName<<endl;
-        }
-        if((temp->next == NULL) && (temp->previous == NULL)){
-            //cout<<temp->planetName<<"->";
+    int diameterArray[counter];
+    int planetdiameter=0;
+    cursor=head;
+    for(int i=0; i<counter;i++)
+    {
+        planetdiameter=cursor->diameter;
+        diameterArray[i]=planetdiameter;
+        cursor=cursor->next;
     }
-        //cout<<temp->planetName<<"->";
-        //cout<<" NULL";
-        //cout<<" "<<endl;
-        x = -1;
+    Bubblesort(diameterArray,counter);
+    cursor=head;
+    for(int j=0; j<counter;j++)
+    {
+        for(cursor=head;cursor!=NULL;cursor=cursor->next)
+        {
+            if(cursor->diameter==diameterArray[j])
+            {
+                cout<<cursor->planetName<<"("<<cursor->diameter<<"Km"<<")"<<"->";
+            }
+        }
+    }
+    cout<<"NULL"<<endl;
+}
 
 
-    }
-    //cout<<largest->planetName<<endl;
-    */
-    cout<<"We are sorry, this option is not working at the moment. Please continue on"<<endl;
-    }
 //add a planet to the solar system including the information of the planet.
 planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
     planetNode *cursor=new planetNode;
@@ -367,3 +352,15 @@ void SolarSystem::Bubblesort(int * array, int sizeArray){
        cout<<array[c]<<endl;
     }
 }//output the order of some number
+
+//function to convert the length of they year of a planet from Earth days to Earth years
+int SolarSystem::convertFromDaysToYears(string name)
+{
+    planetNode *foundPlanet=new planetNode;
+    foundPlanet=searchPlanet(name);
+    double earthDays=foundPlanet->lengthOfYear;
+    double earthYears=earthDays/365;
+    cout<<foundPlanet->planetName<<"'s year length is: "<<earthYears<<" Earth years."<<endl;
+    return 0;
+}
+//The output should be the year length of a planet in Earth years

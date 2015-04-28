@@ -47,6 +47,7 @@ class SolarSystem
         void PrintPlanetbiggesttosmallest();
         planetNode* addPlanet(std::string name, int dist, std::string user);
         planetNode *addPlanet(std::string name,long long dist,std::string user);
+        int convertFromDaysToYears(std::string name);
 
     protected:
     private:
