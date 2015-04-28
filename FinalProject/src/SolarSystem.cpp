@@ -247,29 +247,50 @@ planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     return head;
 }//delete a planet from the solar system
 
+//prints planets from biggest to smallest in terms of diameter length
 void SolarSystem::printPlanetsBiggestToSmallest(){
     cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
+
+    //create a cursor node to traverse through list
     planetNode *cursor= new planetNode;
+
+    //create a counter to count how many nodes are in the linked list
     int counter=0;
     for(cursor=head;cursor!=NULL;cursor=cursor->next)
     {
         counter++;
     }
+
+    //create an Array with a size of the list
     int diameterArray[counter];
-    int planetdiameter=0;
+
+    //planetDiameter variable
+    int planetDiameter=0;
+
+    //make cursor be at the head of the list again
     cursor=head;
+    //for loop to loop through the array
     for(int i=0; i<counter;i++)
     {
-        planetdiameter=cursor->diameter;
-        diameterArray[i]=planetdiameter;
+        //set planetDiameter equal to the diameter of the node
+        planetDiameter=cursor->diameter;
+        //put the diameter into the array
+        diameterArray[i]=planetDiameter;
+        //got to next node
         cursor=cursor->next;
     }
+    //call the bubble sort function to sort the array from biggest to smallest
     Bubblesort(diameterArray,counter);
+
+    //set cursor at the beginning of the list again
     cursor=head;
+    //for loop to loop through array
     for(int j=0; j<counter;j++)
     {
+        //for loop to loop through list
         for(cursor=head;cursor!=NULL;cursor=cursor->next)
         {
+            //if diameter in node equals to diameter in Array print out the planet name and the diameter
             if(cursor->diameter==diameterArray[j])
             {
                 cout<<cursor->planetName<<"("<<cursor->diameter<<"Km"<<")"<<"->";
@@ -278,6 +299,7 @@ void SolarSystem::printPlanetsBiggestToSmallest(){
     }
     cout<<"NULL"<<endl;
 }
+//the function will out put the biggest to smallest planet like so: The Sun(diameter)->Jupiter(diameter) and so on until it hits Null
 
 //add a planet to the solar system including the information of the planet.
 planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
