@@ -247,7 +247,7 @@ planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     return head;
 }//delete a planet from the solar system
 
-void SolarSystem::PrintPlanetbiggesttosmallest(){
+void SolarSystem::printPlanetsBiggestToSmallest(){
     cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
     planetNode *cursor= new planetNode;
     int counter=0;

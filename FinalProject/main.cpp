@@ -61,7 +61,7 @@ int main(){
                 break;
 
             case 7:
-                System->PrintPlanetbiggesttosmallest();
+                System->printPlanetsBiggestToSmallest();
                 //System->BiggestandSmallestplanet();
                 //System->Test();
                 break;
