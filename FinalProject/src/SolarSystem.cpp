@@ -6,9 +6,6 @@
 #include <cstdlib>
 
 using namespace std;
-//Uranus,Blue-green,51118,Ice Giant,30687,3006318143,Uranus hits the coldest temperatures of any planet reaching temperature of -224°C
-//Neptune,Bright Blue,49528,Ice Giant,60190,4537039826,Neptune has a very active climate. Large storms whirl through its upper atmosphere, and high-speed winds track around the planet at up 600 meters per second.
-
 SolarSystem::SolarSystem()
 {
     //ctor
@@ -77,7 +74,7 @@ void SolarSystem::buildSystem(){
 }
 //The build function will out put a linked list of the planets: The Sun->Mercury->Venus and so on until it hits NULL
 
-
+//Print out the the Solar System in order
 void SolarSystem::printSolarSystem()
 {
 
@@ -88,12 +85,10 @@ void SolarSystem::printSolarSystem()
     }
     cout<<" NULL";
     cout<<endl;
-}
-
+}//output the solar system
 
 
 //the randomFact function is a function that randomly picks one of the nodes in the linked list and prints out the random fact about the planet, stored in the node
-//
 int SolarSystem::randomFact(){
     planetNode *cursor= head;
     int counter=0;//to store the number of nodes
@@ -115,11 +110,10 @@ int SolarSystem::randomFact(){
     }
     cout<<cursor2->randomFact<<endl;
     return 0;
-}
-//this function will output the random fact that is stored in a node;
+}//this function will output the random fact that is stored in a node;
 
 
-
+//Search for any planet in the solar system
 planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     planetNode * searchNode = new planetNode;
     searchNode = head;
@@ -135,10 +129,10 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
         return NULL;
     }
 
-}
+}//Output the name of a planet
 
+//Find a planet in the linked list
 void SolarSystem::findPlanet(string namePlanet){
-    //string namePlanet;
     planetNode* foundPlanet;
     foundPlanet = searchPlanet(namePlanet);
     if(foundPlanet != NULL){
@@ -149,8 +143,9 @@ void SolarSystem::findPlanet(string namePlanet){
             cout<<"Color: "<<foundPlanet->color<<endl;
             cout<<"Type: "<<foundPlanet->type<<endl;
             cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
+            cout<<"Length of year:"<<foundPlanet->lengthOfYear<<" Earth days"<<endl;
     }
-}
+}//output the name of the planet and the information about the planet:Color, Type of the planet, and Distance from the sun
 
 
 //This function find the distance between two planets, by subtracting the nodes "distances from the sun" from each other to get the distance between them
@@ -188,7 +183,7 @@ int SolarSystem::distanceBetweenPlanets(string name, string name2)
 }
 //once this function is complete and it was a valid input, it should output the the name of the planets and the distance between them
 
-//<<<<<<< HEAD
+//Find the closest planet to the user's planet
 void SolarSystem::closestPlanet(string namePlanet){
     planetNode* Planet = new planetNode;
     planetNode * nearplanet;
@@ -198,12 +193,9 @@ void SolarSystem::closestPlanet(string namePlanet){
     if(Planet != NULL){
         if(Planet->previous == NULL){
              nearplanet= Planet->next;
-             //cout<<"HI"<<endl;
         }else{
         if(Planet->next == NULL){
             nearplanet = Planet->previous;
-            //nearplanet = Planet->next;
-            cout<<"HI"<<endl;
         }else{
             pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
             next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
@@ -225,12 +217,13 @@ void SolarSystem::closestPlanet(string namePlanet){
             cout<<"Distance from the sun: "<<nearplanet->distanceFromSun<<" km"<<endl;
     }
 
-}
+}//output the closest planet with its information
 
-planetNode* SolarSystem::deleteNode(planetNode* head){
+//delete a node from the linked list
+planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     planetNode *cursor;
-    planetNode *cursorPrevious;
-    string name2;
+    //planetNode *cursorPrevious;
+    //string name2;
     cursor=head;
     if(head->planetName == name2)
     {
@@ -245,58 +238,48 @@ planetNode* SolarSystem::deleteNode(planetNode* head){
 
         if(cursor->planetName==name2)
         {
-            cursorPrevious->next=cursor->next;
+            cursor->previous->next=cursor->next;
             delete cursor;
             break;
         }
-        cursorPrevious=cursor;
+        cursor->previous=cursor;
     }
     return head;
-}
+}//delete a planet from the solar system
 
 void SolarSystem::PrintPlanetbiggesttosmallest(){
-    planetNode* temp = head;
-    string nameplanet;
-    planetNode* largest = new planetNode;
-    int cur_diameter;
-    int largest_diameter = 0;
-    int x = 1;
-    //cout<<"1"<<endl;
-    while(x >= 0){
-        if(temp->next == NULL){
-            if(temp->diameter == largest_diameter){
-                largest_diameter = temp->diameter;
-                largest = temp;
-                cout<<"1"<<endl;
-            }else{
-            cout<<largest->planetName<<"->";
-            deleteNode(largest);
-            temp = head;
-            largest_diameter = 0;
-        }
-        }
-        if(temp->diameter > largest_diameter){
-            largest_diameter = temp->diameter;
-            largest = temp;
-        }
-        if((temp->next != NULL) && (temp->previous != NULL)){
-        //for(temp = largest; temp != NULL; temp= temp->next){
-            cout<<temp->planetName<<endl;
-            //cout<<temp->planetName<<"->";
-            //x = -1;
-            //cout<<" NULL";
-            //cout<<endl;
+    cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
+    planetNode *cursor= new planetNode;
+    int counter=0;
+    for(cursor=head;cursor!=NULL;cursor=cursor->next)
+    {
+        counter++;
     }
-        //cout<<" NULL";
-        //cout<<" "<<endl;
-        x++;
-
-
-
+    int diameterArray[counter];
+    int planetdiameter=0;
+    cursor=head;
+    for(int i=0; i<counter;i++)
+    {
+        planetdiameter=cursor->diameter;
+        diameterArray[i]=planetdiameter;
+        cursor=cursor->next;
     }
-    x = -1;
+    Bubblesort(diameterArray,counter);
+    cursor=head;
+    for(int j=0; j<counter;j++)
+    {
+        for(cursor=head;cursor!=NULL;cursor=cursor->next)
+        {
+            if(cursor->diameter==diameterArray[j])
+            {
+                cout<<cursor->planetName<<"("<<cursor->diameter<<"Km"<<")"<<"->";
+            }
+        }
+    }
+    cout<<"NULL"<<endl;
 }
 
+//add a planet to the solar system including the information of the planet.
 planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
     planetNode *cursor=new planetNode;
     planetNode *newPlanet=new planetNode;
@@ -320,7 +303,7 @@ planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
         cout<<"Your planet will be too close to "<<cursor->previous->planetName<<endl;
         cout<<"please choose a new distance thats a million or two Km greater than your old distance:"<<endl;
         getline(cin, newDistance);
-        dist=stoi(newDistance);
+        dist=stoll(newDistance);
     }
     planetNode *temp=cursor->previous;
     planetNode *temp2=cursor->previous->next;
@@ -347,7 +330,19 @@ planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
         cout<<newPlanet->planetName<<" will be an Ice Giant because you put it after the asteroid belt and after Saturn"<<endl;
     }
     return head;
-}
+}//after you put in your planet into the solar system, you can print the solar system and see your planet there
 
-//=======
-//>>>>>>> 545933c21198b3b3e37d32478065884331b71a80
+//The purpose of the function sort the diameter array of the planets
+void SolarSystem::Bubblesort(int * array, int sizeArray){
+    int swap;
+    for(int c = 0; c < sizeArray - 1; c++){
+        for(int d = 0; d < sizeArray - c - 1; d++){
+            if(array[d] < array[d+1]){
+                swap = array[d];
+                array[d] = array[d+1];
+                array[d+1] = swap;
+            }
+        }
+    }
+}//output the order of the planets from biggest to smallest in terms of diameter
+

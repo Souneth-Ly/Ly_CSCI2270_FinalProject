@@ -47,10 +47,12 @@ class SolarSystem
         void PrintPlanetbiggesttosmallest();
         planetNode *addPlanet(std::string name,long long dist,std::string user);
 
+
     protected:
     private:
         planetNode* searchPlanet(std::string Planet);
-        planetNode* deleteNode(planetNode* head);
+        planetNode* deleteNode(planetNode* head, std::string name2);
+        void Bubblesort(int *array, int sizeArray);
         planetNode* head;
         planetNode* tail;
 };

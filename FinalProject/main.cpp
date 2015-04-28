@@ -20,7 +20,7 @@ int main(){
         cout<<"4.Print Random Fact"<<endl;
         cout<<"5.Find a planet close your Favorite planet"<<endl;
         cout<<"6.Distance between planets"<<endl;
-        cout<<"7. Print the Biggest Planet to the Smallest"<<endl;
+        cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
         cout<<"8.Add our own planet"<<endl;
         cout<<"9.Quit"<<endl;
         cin>>selection;
@@ -46,7 +46,7 @@ int main(){
         }
         if (selection[0]=='5'){
             string Nameplanet;
-            cout<<"Enter Name of the Planet"<<endl;
+            cout<<"Enter your favorite Planet"<<endl;
             getline(cin, Nameplanet);
             System->closestPlanet(Nameplanet);
 
@@ -63,6 +63,8 @@ int main(){
         }
         if(selection[0]== '7'){
             System->PrintPlanetbiggesttosmallest();
+            //System->BiggestandSmallestplanet();
+            //System->Test();
         }
         if(selection[0]== '8'){
             string creator;
@@ -74,15 +76,6 @@ int main(){
             getline(cin, nextName);
             cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
             getline(cin, distance);
-            /*
-            for(planetNode *cursor = head; cursor!= NULL; cursor = cursor->next)
-            {
-                if(cursor->planetName == name)
-                {
-                    previous = cursor;
-                }
-
-            }*/
 
             System->addPlanet(nextName,stoll(distance),creator);
         }
