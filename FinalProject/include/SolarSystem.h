@@ -46,6 +46,7 @@ class SolarSystem
         int distanceBetweenPlanets(std::string name, std::string name2);
         void PrintPlanetbiggesttosmallest();
         planetNode *addPlanet(std::string name,long long dist,std::string user);
+        int convertFromDaysToYears(std::string name);
 
 
     protected:

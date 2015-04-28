@@ -346,3 +346,14 @@ void SolarSystem::Bubblesort(int * array, int sizeArray){
     }
 }//output the order of the planets from biggest to smallest in terms of diameter
 
+//function to convert the length of they year of a planet from Earth days to Earth years
+int SolarSystem::convertFromDaysToYears(string name)
+{
+    planetNode *foundPlanet=new planetNode;
+    foundPlanet=searchPlanet(name);
+    double earthDays=foundPlanet->lengthOfYear;
+    double earthYears=earthDays/365;
+    cout<<foundPlanet->planetName<<"'s year length is: "<<earthYears<<" Earth years."<<endl;
+    return 0;
+}
+//The output should be the year length of a planet in Earth years
