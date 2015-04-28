@@ -118,12 +118,12 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
     planetNode * searchNode = new planetNode;
     searchNode = head;
     while(searchNode != NULL){
-        if(searchNode->planetName == namePlanet){
+        if(searchNode->planetName == namePlanet){//if the Linked List is not empty, it will search for the planet
             return searchNode;
         }
         searchNode = searchNode->next;
     }
-    if(searchNode==NULL)
+    if(searchNode==NULL)//check if the user enter a correct name of the planet in the solar system
     {
         cout<<"This planet is not in our Solar System"<<endl;
         return NULL;
@@ -134,8 +134,8 @@ planetNode* SolarSystem::searchPlanet(std:: string namePlanet){
 //Find a planet in the linked list
 void SolarSystem::findPlanet(string namePlanet){
     planetNode* foundPlanet;
-    foundPlanet = searchPlanet(namePlanet);
-    if(foundPlanet != NULL){
+    foundPlanet = searchPlanet(namePlanet);//search for the planet the user input
+    if(foundPlanet != NULL){//output the information the user planet
 
             cout<<"Planet Info:"<<endl;
             cout<<"==========="<<endl;
@@ -184,7 +184,7 @@ int SolarSystem::distanceBetweenPlanets(string name, string name2)
 //once this function is complete and it was a valid input, it should output the the name of the planets and the distance between them
 
 //Find the closest planet to the user's planet
-void SolarSystem::closestPlanet(string namePlanet){
+planetNode* SolarSystem::closestPlanet(string namePlanet){
     planetNode* Planet = new planetNode;
     planetNode * nearplanet;
     Planet = searchPlanet(namePlanet);
@@ -192,12 +192,12 @@ void SolarSystem::closestPlanet(string namePlanet){
     int next_dist;
     if(Planet != NULL){
         if(Planet->previous == NULL){
-             nearplanet= Planet->next;
+             nearplanet= Planet->next;//check if the planet the user looking for is the Beginning of the Linked list
         }else{
-        if(Planet->next == NULL){
+        if(Planet->next == NULL){//check if the planet the user looking for is the end of the the Linked List
             nearplanet = Planet->previous;
         }else{
-            pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;
+            pre_dist = Planet->distanceFromSun - Planet->previous->distanceFromSun;//using the distance from the sun to determine the closest planet
             next_dist = Planet->next->distanceFromSun - Planet->distanceFromSun;
         }
 
@@ -207,7 +207,11 @@ void SolarSystem::closestPlanet(string namePlanet){
         nearplanet = Planet->previous;
     }
     }
-     if(nearplanet != NULL){
+     if(Planet == NULL){
+        cout<<"Please try again"<<endl;
+        return NULL;
+    }
+     if(nearplanet != NULL){//output the information of the closest planet
 
             cout<<"Planet Close to:"<<" "<<Planet->planetName<<endl;
             cout<<"==========="<<endl;
@@ -246,29 +250,50 @@ planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
 }//delete a planet from the solar system
 
 
+//prints planets from biggest to smallest in terms of diameter length
 void SolarSystem::printPlanetsBiggestToSmallest(){
     cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
+
+    //create a cursor node to traverse through list
     planetNode *cursor= new planetNode;
+
+    //create a counter to count how many nodes are in the linked list
     int counter=0;
     for(cursor=head;cursor!=NULL;cursor=cursor->next)
     {
         counter++;
     }
+
+    //create an Array with a size of the list
     int diameterArray[counter];
-    int planetdiameter=0;
+
+    //planetDiameter variable
+    int planetDiameter=0;
+
+    //make cursor be at the head of the list again
     cursor=head;
+    //for loop to loop through the array
     for(int i=0; i<counter;i++)
     {
-        planetdiameter=cursor->diameter;
-        diameterArray[i]=planetdiameter;
+        //set planetDiameter equal to the diameter of the node
+        planetDiameter=cursor->diameter;
+        //put the diameter into the array
+        diameterArray[i]=planetDiameter;
+        //got to next node
         cursor=cursor->next;
     }
+    //call the bubble sort function to sort the array from biggest to smallest
     Bubblesort(diameterArray,counter);
+
+    //set cursor at the beginning of the list again
     cursor=head;
+    //for loop to loop through array
     for(int j=0; j<counter;j++)
     {
+        //for loop to loop through list
         for(cursor=head;cursor!=NULL;cursor=cursor->next)
         {
+            //if diameter in node equals to diameter in Array print out the planet name and the diameter
             if(cursor->diameter==diameterArray[j])
             {
                 cout<<cursor->planetName<<"("<<cursor->diameter<<"Km"<<")"<<"->";
@@ -276,8 +301,9 @@ void SolarSystem::printPlanetsBiggestToSmallest(){
         }
     }
     cout<<"NULL"<<endl;
-}//output the order of the planets from biggest to smallest in terms of diameter
 
+}//output the order of the planets from biggest to smallest in terms of diameter
+//the function will out put the biggest to smallest planet like so: The Sun(diameter)->Jupiter(diameter) and so on until it hits Null
 
 //add a planet to the solar system including the information of the planet.
 planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
@@ -381,6 +407,10 @@ int SolarSystem::convertFromDaysToYears(string name)
 {
     planetNode *foundPlanet=new planetNode;
     foundPlanet=searchPlanet(name);
+    if(foundPlanet == NULL){
+        cout<<"Please try again"<<endl;
+        return NULL;
+    }
     double earthDays=foundPlanet->lengthOfYear;
     double earthYears=earthDays/365;
     cout<<foundPlanet->planetName<<"'s year length is: "<<earthYears<<" Earth years."<<endl;

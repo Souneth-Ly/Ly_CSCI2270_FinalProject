@@ -33,7 +33,6 @@ int main(){
                 System->printSolarSystem();
                 break;
 
-
             case 3:
                 cout<<"Enter Name of the Planet"<<endl;
                 getline(cin, namePlanet);
@@ -44,13 +43,11 @@ int main(){
                 System->randomFact();
                 break;
 
-
             case 5:
                 cout<<"Enter your favorite Planet"<<endl;
                 getline(cin, namePlanet);
                 System->closestPlanet(namePlanet);
                 break;
-
 
             case 6:
                 cout<<"Enter name of the first planet:"<<endl;
@@ -62,8 +59,6 @@ int main(){
 
             case 7:
                 System->printPlanetsBiggestToSmallest();
-                //System->BiggestandSmallestplanet();
-                //System->Test();
                 break;
 
             case 8:
@@ -87,7 +82,7 @@ int main(){
                 cout<<"Goodbye!"<<endl;
                 quit = true;
                 break;
-            //invalid input;
+
             default:
                 cout << "Invalid Input" << endl;
                 cin.clear();
