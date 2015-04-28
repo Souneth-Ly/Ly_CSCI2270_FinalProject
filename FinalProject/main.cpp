@@ -3,90 +3,113 @@
 #include "SolarSystem.h"
 
 using namespace std;
-
+void displayMenu();
 int main(){
     SolarSystem *System = new SolarSystem;
+    int input;
+    bool quit=false;
 
 
     //inputfile.close();
+    string namePlanet;
+    string namePlanet2;
+    string userName;
+    string distance;
 
-    while(1){
+    while(quit!=true){
 
-        char selection[2];
-        cout<<"======Main Menu====="<<endl;
-        cout<<"1.Build the solar system"<<endl;
-        cout<<"2.Print the solar system"<<endl;
-        cout<<"3.Find Planet"<<endl;
-        cout<<"4.Print Random Fact"<<endl;
-        cout<<"5.Find a planet close your Favorite planet"<<endl;
-        cout<<"6.Distance between planets"<<endl;
-        cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
-        cout<<"8.Add our own planet"<<endl;
-        cout<<"9.Quit"<<endl;
-        cin>>selection;
-        cin.ignore(1, '\n');
-        if(selection[0]=='1'){
-            System->buildSystem();
-            System->printSolarSystem();
-        }
-        if(selection[0]=='2'){
-            System->printSolarSystem();
-
-        }
-        if(selection[0]=='3'){
-            string namePlanet;
-            cout<<"Enter Name of the Planet"<<endl;
-            getline(cin, namePlanet);
-            System->findPlanet(namePlanet);
-
-        }
-        if(selection[0]=='4'){
-           System->randomFact();
-
-        }
-        if (selection[0]=='5'){
-            string Nameplanet;
-            cout<<"Enter your favorite Planet"<<endl;
-            getline(cin, Nameplanet);
-            System->closestPlanet(Nameplanet);
-
-        }
-        if(selection[0]=='6')
+        displayMenu();
+        cin>>input;
+        cin.clear();
+        cin.ignore(10000, '\n');
+        switch(input)
         {
-            string nameP1;
-            string nameP2;
-            cout<<"Enter name of the first planet:"<<endl;
-            getline(cin,nameP1);
-            cout<<"Enter name of the second planet:"<<endl;
-            getline(cin,nameP2);
-            System->distanceBetweenPlanets(nameP1, nameP2);
-        }
-        if(selection[0]== '7'){
-            System->PrintPlanetbiggesttosmallest();
-            //System->BiggestandSmallestplanet();
-            //System->Test();
-        }
-        if(selection[0]== '8'){
-            string creator;
-            string distance;
-            string nextName;
-            cout<<"Please enter your name:"<<endl;
-            getline(cin,creator);
-            cout<<"Enter the new planet name:"<<endl;
-            getline(cin, nextName);
-            cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
-            getline(cin, distance);
+            case 1:
+                System->buildSystem();
+                System->printSolarSystem();
+                break;
 
-            System->addPlanet(nextName,stoll(distance),creator);
-        }
-        if(selection[0]== '9'){
+            case 2:
+                System->printSolarSystem();
+                break;
 
-            cout<<"Goodbye!"<<endl;
-            //delete;
-            break;
-        }
 
-        }
-        return 0;
+            case 3:
+                cout<<"Enter Name of the Planet"<<endl;
+                getline(cin, namePlanet);
+                System->findPlanet(namePlanet);
+                break;
 
+            case 4:
+                System->randomFact();
+                break;
+
+
+            case 5:
+                cout<<"Enter your favorite Planet"<<endl;
+                getline(cin, namePlanet);
+                System->closestPlanet(namePlanet);
+                break;
+
+
+            case 6:
+                cout<<"Enter name of the first planet:"<<endl;
+                getline(cin,namePlanet);
+                cout<<"Enter name of the second planet:"<<endl;
+                getline(cin,namePlanet2);
+                System->distanceBetweenPlanets(namePlanet, namePlanet2);
+                break;
+
+            case 7:
+                System->printPlanetsBiggestToSmallest();
+                //System->BiggestandSmallestplanet();
+                //System->Test();
+                break;
+
+            case 8:
+                cout<<"Please enter your name:"<<endl;
+                getline(cin,userName);
+                cout<<"Enter the new planet name:"<<endl;
+                getline(cin, namePlanet);
+                cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
+                getline(cin, distance);
+
+                System->addPlanet(namePlanet,stoll(distance),userName);
+                break;
+
+            case 9:
+                cout<<"Enter a planet name to see its length in Earth years:"<<endl;
+                getline(cin, namePlanet);
+                System->convertFromDaysToYears(namePlanet);
+                break;
+
+            case 10:
+                cout<<"Goodbye!"<<endl;
+                quit = true;
+                break;
+            //invalid input;
+            default:
+                cout << "Invalid Input" << endl;
+                cin.clear();
+                cin.ignore(10000,'\n');
+                break;
+        }
+    }
+    delete System;
+    return 0;
+}
+void displayMenu()
+{
+    cout<<"======Main Menu====="<<endl;
+    cout<<"1.Build the solar system"<<endl;
+    cout<<"2.Print the solar system"<<endl;
+    cout<<"3.Find Planet"<<endl;
+    cout<<"4.Print Random Fact"<<endl;
+    cout<<"5.Find a planet close your Favorite planet"<<endl;
+    cout<<"6.Distance between planets"<<endl;
+    cout<<"7.Print the Biggest Planet to the Smallest"<<endl;
+    cout<<"8.Add your own planet"<<endl;
+    cout<<"9.Convert a planet's year length from Earth days to Earth years"<<endl;
+    cout<<"10.Quit"<<endl;
+    return;
 }

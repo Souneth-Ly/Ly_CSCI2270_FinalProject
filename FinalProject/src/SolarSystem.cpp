@@ -6,9 +6,6 @@
 #include <cstdlib>
 
 using namespace std;
-//Uranus,Blue-green,51118,Ice Giant,30687,3006318143,Uranus hits the coldest temperatures of any planet reaching temperature of -224°C
-//Neptune,Bright Blue,49528,Ice Giant,60190,4537039826,Neptune has a very active climate. Large storms whirl through its upper atmosphere, and high-speed winds track around the planet at up 600 meters per second.
-
 SolarSystem::SolarSystem()
 {
     //ctor
@@ -146,6 +143,7 @@ void SolarSystem::findPlanet(string namePlanet){
             cout<<"Color: "<<foundPlanet->color<<endl;
             cout<<"Type: "<<foundPlanet->type<<endl;
             cout<<"Distance from the sun: "<<foundPlanet->distanceFromSun<<" km"<<endl;
+            cout<<"Length of year:"<<foundPlanet->lengthOfYear<<" Earth days"<<endl;
     }
 }//output the name of the planet and the information about the planet:Color, Type of the planet, and Distance from the sun
 
@@ -224,8 +222,6 @@ void SolarSystem::closestPlanet(string namePlanet){
 //delete a node from the linked list
 planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     planetNode *cursor;
-    //planetNode *cursorPrevious;
-    //string name2;
     cursor=head;
     if(head->planetName == name2)
     {
@@ -249,7 +245,8 @@ planetNode* SolarSystem::deleteNode(planetNode* head, string name2){
     return head;
 }//delete a planet from the solar system
 
-void SolarSystem::PrintPlanetbiggesttosmallest(){
+
+void SolarSystem::printPlanetsBiggestToSmallest(){
     cout<<"Planets and Sun listed from biggest to smallest:comparing the diameters of the planets"<<endl;
     planetNode *cursor= new planetNode;
     int counter=0;
@@ -279,19 +276,28 @@ void SolarSystem::PrintPlanetbiggesttosmallest(){
         }
     }
     cout<<"NULL"<<endl;
-}
+}//output the order of the planets from biggest to smallest in terms of diameter
 
 
 //add a planet to the solar system including the information of the planet.
 planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
+    //declaring a cursor traverse through the list
     planetNode *cursor=new planetNode;
+
+    //declaring a new node to put the information of the new planet in
     planetNode *newPlanet=new planetNode;
+
+    //coolFact to put in as a random fact for the new planet
     string coolFact= name+" was created by the great and powerful "+creator;
     cursor=head;
+    //While distance the user inputed is less than the nodes distance from the sun
+    //keep going until the user's distance is less than the nodes and thats where you will put the node
     while(dist>cursor->distanceFromSun)
     {
         cursor=cursor->next;
     }
+
+    //the new planet is too close to another planet then ask the user for a new distance
     if(cursor->distanceFromSun-dist<2500000)
     {
         string newDistance;
@@ -306,41 +312,57 @@ planetNode* SolarSystem::addPlanet(string name, long long dist,string creator){
         cout<<"Your planet will be too close to "<<cursor->previous->planetName<<endl;
         cout<<"please choose a new distance thats a million or two Km greater than your old distance:"<<endl;
         getline(cin, newDistance);
-        dist=stoi(newDistance);
+        dist=stoll(newDistance);
     }
+
+    //insert new node into its position
     planetNode *temp=cursor->previous;
     planetNode *temp2=cursor->previous->next;
     cursor->previous->next=newPlanet;
     cursor->previous=newPlanet;
     newPlanet->previous=temp;
     newPlanet->next=temp2;
-    newPlanet->planetName=name;
-    newPlanet->distanceFromSun=dist;
-    newPlanet->randomFact=coolFact;
+    newPlanet->planetName=name; //insert planet name
+    newPlanet->distanceFromSun=dist;//insert the new planets distance from the sun
+    newPlanet->randomFact=coolFact;//insert random fact
+
+    //Ask the user what color they want the planet to be
     string color;
     cout<<"What color do you want your planet?"<<endl;
     getline(cin, color);
-    newPlanet->color=color;
+    newPlanet->color=color;//insert color.
+
+    //ask user how big the planet's diameter is going to be
+    string diameter;
+    cout<<"How big do you want you planet's diameter to be?"<<endl;
+    getline(cin,diameter);
+    newPlanet->diameter=stoi(diameter);//insert new planet's diameter
+
+    //Calculating the average year length of the planet's that come before and after the new planet
+    int avgYearLength= ((newPlanet->previous->lengthOfYear)+(newPlanet->next->lengthOfYear))/2;
+    newPlanet->lengthOfYear=avgYearLength;//inserting the year length of the new planet
+
+    //if the distance is less than the distance of the asteroid belt then the planet will be a terrestrial planet
     if(dist<450000000)
     {
-        newPlanet->type="Terrestrial planet";
+        newPlanet->type="Terrestrial planet";//insert new planet's type
         cout<<newPlanet->planetName<<" will be a Terrestrial planet because you put it before the asteroid belt"<<endl;
-    }else if(45000000<dist && dist<1700000000){
+    }else if(45000000<dist && dist<1700000000){//if new planet's distance is greater than the asteroid belt  but less than the of  Saturn then it will be a Gas giant
         newPlanet->type="Gas Giant";
         cout<<newPlanet->planetName<<" will be a Gas Giant because you put it after the asteroid belt"<<endl;
-    }else {
+    }else {//else its greater than Saturn distance from the sun and it will be a Gas Giant
         newPlanet->type="Ice Giant";
         cout<<newPlanet->planetName<<" will be an Ice Giant because you put it after the asteroid belt and after Saturn"<<endl;
     }
     return head;
 }//after you put in your planet into the solar system, you can print the solar system and see your planet there
 
-//The purpose of the function sort the diameter of the planet
+//The purpose of the function sort the diameter array of the planets
 void SolarSystem::Bubblesort(int * array, int sizeArray){
     int swap;
     for(int c = 0; c < sizeArray - 1; c++){
         for(int d = 0; d < sizeArray - c - 1; d++){
-            if(array[d] > array[d+1]){
+            if(array[d] < array[d+1]){
                 swap = array[d];
                 array[d] = array[d+1];
                 array[d+1] = swap;
@@ -352,6 +374,7 @@ void SolarSystem::Bubblesort(int * array, int sizeArray){
        cout<<array[c]<<endl;
     }
 }//output the order of some number
+
 
 //function to convert the length of they year of a planet from Earth days to Earth years
 int SolarSystem::convertFromDaysToYears(string name)
