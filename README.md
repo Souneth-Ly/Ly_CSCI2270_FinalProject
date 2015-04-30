@@ -3,6 +3,8 @@ Summary of Code: Our final project is a Solar System Data system. We are using a
 
 Directions for Use:  The code read in the file SolarSystemData.txt so that when you select build Solar System it will build the linked list from information on the file. Once running the user will be promted to select what the user would like to do with the data.
 
+Files needed for code to run: SolarSystemData.txt, main.cpp, SolarSystem.cpp, and SolarSystem.h
+
 System Requirements: This project will work on any system
 
 Group Members: Julio Lemos, Souneth Ly
