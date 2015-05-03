@@ -9,7 +9,6 @@ int main(){
     int input;
     bool quit=false;
 
-
     //inputfile.close();
     string namePlanet;
     string namePlanet2;
@@ -26,27 +25,31 @@ int main(){
         {
             case 1:
                 System->buildSystem();
-                System->printSolarSystem();
+                //System->printSolarSystem(); //Removed by jogo9225
                 break;
 
             case 2:
                 System->printSolarSystem();
+                cout << endl; //added by jogo9225
                 break;
 
             case 3:
                 cout<<"Enter Name of the Planet"<<endl;
                 getline(cin, namePlanet);
                 System->findPlanet(namePlanet);
+                cout << endl; //added by jogo9225
                 break;
 
             case 4:
                 System->randomFact();
+                cout << endl; //added by jogo9225
                 break;
 
             case 5:
                 cout<<"Enter your favorite Planet"<<endl;
                 getline(cin, namePlanet);
                 System->closestPlanet(namePlanet);
+                cout << endl; //added by jogo9225
                 break;
 
             case 6:
@@ -55,10 +58,12 @@ int main(){
                 cout<<"Enter name of the second planet:"<<endl;
                 getline(cin,namePlanet2);
                 System->distanceBetweenPlanets(namePlanet, namePlanet2);
+                cout << endl; //added by jogo9225
                 break;
 
             case 7:
                 System->printPlanetsBiggestToSmallest();
+                cout << endl; //added by jogo9225
                 break;
 
             case 8:
@@ -66,16 +71,18 @@ int main(){
                 getline(cin,userName);
                 cout<<"Enter the new planet name:"<<endl;
                 getline(cin, namePlanet);
-                cout<<"Enter how far this planet is to the sun: it has to be a distance in the millions"<<endl;
+                cout<<"Enter how far this planet is to the sun in kilometers:"<<endl;
                 getline(cin, distance);
 
                 System->addPlanet(namePlanet,stoll(distance),userName);
+                cout << endl; //added by jogo9225
                 break;
 
             case 9:
                 cout<<"Enter a planet name to see its length in Earth years:"<<endl;
                 getline(cin, namePlanet);
                 System->convertFromDaysToYears(namePlanet);
+                cout << endl; //added by jogo9225
                 break;
 
             case 10:
